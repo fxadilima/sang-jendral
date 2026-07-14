@@ -1,4 +1,4 @@
-import {h, render, Component} from 'preact';
+import {h, render, Component, ComponentChildren} from 'preact';
 import {
     lazy,
     LocationProvider,
@@ -15,7 +15,7 @@ console.log(`[index.ts] loaded (as index.js)`);
 const NotesComponent = lazy(() => import('./content/notes.mdx'));
 
 class App extends Component<unknown> {
-    override render(): JSX.Element {
+    render(): JSX.Element {
         return h(Home,
             { class: "container p-5" },
             this.props.children
@@ -24,7 +24,7 @@ class App extends Component<unknown> {
 }
 
 class Notes extends Component<unknown> {
-    override render(): JSX.Element {
+    render(): JSX.Element {
         return h("div",
             { class: "container p-2 my-3" }, [
                 h(NotesComponent, null)
@@ -32,16 +32,8 @@ class Notes extends Component<unknown> {
     }
 }
 
-class Stories extends Component<unknown> {
-    override render(): JSX.Element {
-        return h("div", { class: "container p-3 my-2" }, [
-            h("h1", null, "Stories")
-        ]);
-    }
-}
-
 class NotFound extends Component<unknown> {
-    override render(): JSX.Element {
+    render(): JSX.Element {
         return h("div", { class: "card p-5 my-5" }, [
             h("h1", { class: "text-center" }, "Not Found"),
             h('p', null, 'Could not find the page!'),
@@ -69,4 +61,3 @@ export function Story(target: HTMLElement) {
     ]), target);
     return true;
 }
-
