@@ -50,15 +50,23 @@ class NotFound extends Component<unknown> {
     }
 }
 
-render(h("div", { class: "container-fluid my-5" }, [
-    h(LocationProvider, null, [
-        h(ErrorBoundary, null, [
-            h(Router, null, [
-                h(Route, { path: "/", component: App }),
-                h(Route, { path: "/notes", component: Notes }),
-                h(Route, { path: "/stories", component: Stories }),
-                h(Route, { default: true, component: NotFound })
+export function Story(target: HTMLElement) {
+    if (target === undefined || target === null) {
+        console.error(`[Sang Jendral]: The target rendering frame must not be NULL or undefined!`);
+        return false;
+    }
+    render(h("div", { class: "container-fluid my-5" }, [
+        h(LocationProvider, null, [
+            h(ErrorBoundary, null, [
+                h(Router, null, [
+                    h(Route, { path: "/", component: App }),
+                    h(Route, { path: "/notes", component: Notes }),
+                    h(Route, { path: "/stories", component: Stories }),
+                    h(Route, { default: true, component: NotFound })
+                ])
             ])
         ])
-    ])
-]), document.getElementById('app')!);
+    ]), target);
+    return true;
+}
+
