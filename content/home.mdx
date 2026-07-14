@@ -1,0 +1,71 @@
+
+export function Card(props) {
+  return <div class="card">{props.children}</div>;
+}
+
+export function CardHeader(props) {
+  return (
+    <div class="card-header">
+    {props.title && <h3>{props.title}</h3>}
+    {props.subtitle && <h5>{props.subtitle}</h5>}
+    {props.children}
+    </div>
+  );
+}
+
+export function CardBody(props) {
+  return <div class="card-body">{props.children}</div>;
+}
+
+export function CardFooter(props) {
+  return <div class="card-footer">{props.children}</div>;
+}
+
+export function Story(props) {
+  return (
+    <div class="col-sm-8">
+      <h1>{props.title}</h1>
+      <h5>{props.subtitle}</h5>
+      {props.children}
+    </div>
+  );
+}
+
+export function News(props) {
+  return (
+    <div class="col-sm-4">{props.children}</div>
+  );
+}
+
+<div class="row">
+  <Story title="Storyboard" subtitle="Tuesday, 14 July 2026">
+    Wuxiapedia berusaha menyajikan cerita-cerita silat yang dikemas dengan tema sejarah,
+    mengikuti tradisi cerita silat sebelumnya.
+
+    Cerita utama yang ada di sini berawal dari zaman Dinasti Yuan, meskipun sebenarnya
+    berkaitan erat dengan `Trilogi Rajawali` Jinyong, yang dimulai sejak era akhir Dinasti Song,
+    ditandai dengan kebangkitan Genghis Khan.
+
+    ## Backstory
+
+    Cerita mengenai Guo Jing dan Huangrong, lalu Yang Guo dan Xiao Longnu, semuanya masih 
+    berusaha dipertahankan dan disebutkan di sana-sini dalam bentuk cerita rakyat, karena
+    zaman di mana Zhang Wuji hidup sudah sangat lain.
+
+    Supaya kita lebih mudah menelusuri era, judul cerita selalu diberi penanda waktu atau penanda era,
+    begitu juga dalam menceritakan kejadian paralel.
+
+    
+  </Story>
+  <News>
+    <Card>
+      <CardHeader title="Prolog" subtitle="Alamut, 1355" />
+      <CardBody>
+      Tulis semua *cerita* di sini...
+      </CardBody>
+      <CardFooter>
+      </CardFooter>
+    </Card>
+  </News>
+</div>
+

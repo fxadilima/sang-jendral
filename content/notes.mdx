@@ -1,0 +1,72 @@
+
+export function ToggleButton(props) {
+  return (
+    <button data-bs-toggle="collapse" data-bs-target={props.target} class="btn btn-primary">{props.title}</button>
+  );
+}
+
+export function CardHeader(props) {
+  return <div class="card-header"><h1>{props.title}</h1>{props.children}</div>;
+}
+
+<div class="row">
+  <div class="col-sm-8">
+
+  Kita akan membuat `Card` dengan cara seperti ini:
+
+    {/* <button data-bs-toggle="collapse" data-bs-target="#contoh-1" class="btn btn-primary">Contoh 1</button> */}
+    <ToggleButton target="#contoh-1" title="Contoh 1" />
+    <div id="contoh-1" class="container collapse my-3">
+
+# Membuat Card dan Panel
+
+Ini Card yang bisa kita buat untuk panel sebelah:
+
+```html
+<div class="card">
+  <div class="card-header">
+    <div class="btn-group">
+        <button class="btn btn-primary" onClick={
+            async () => {
+                const data = await fetch("/components/sidebar.md");
+                const text = await data.text();
+                document.getElementById('testTag').innerHTML = text;
+            }}>Test Button</button>
+
+        <button class="btn btn-primary" onClick={
+            () => { document.getElementById('testTag').innerHTML = "" }
+        }>Clear</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <pre id="testTag"></pre>
+  </div>
+</div>
+```
+    </div> {/* Untuk collapse */}
+  </div>
+
+  <div class="col-sm-4">
+    <div class="card my-3">
+      <CardHeader title="Header">
+        <img class="card-img-top"
+          src="/images/medium/haengju-1320.jpg"
+          alt="Banner"
+          style="width:100%" />
+      </CardHeader>
+      <div class="card-body">
+      Cek links:
+      - [Halaman Utama](/)
+      - [Notes](/notes)
+      - [Stories (as a page)](/stories)
+      - [Pasti akan error](/tidak-ada)
+      </div>
+      <div class="card-footer">
+        <h4>Footer</h4>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
